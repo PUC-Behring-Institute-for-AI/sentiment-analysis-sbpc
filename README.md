@@ -1,4 +1,3 @@
-````markdown
 # Sentiment Analysis em Português: da Bag of Words aos Transformers
 
 Este projeto demonstra, de forma interativa, como diferentes modelos de IA realizam **Análise de Sentimentos (Sentiment Analysis)** em textos em português do Brasil.
@@ -236,4 +235,3 @@ As próximas versões deverão incluir:
 # Disclaimer
 
 Este projeto é disponibilizado exclusivamente para fins educacionais e de divulgação científica.
-````
