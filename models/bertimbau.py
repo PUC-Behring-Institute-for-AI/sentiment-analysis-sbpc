@@ -46,7 +46,7 @@ class BertimbauModel:
             for key, value in encoding.items()
         }
 
-        outputs = self.model(**encoding)
+        outputs = self.model(**encoding, output_hidden_states=True)
 
         probabilities = torch.softmax(
             outputs.logits,
@@ -67,6 +67,20 @@ class BertimbauModel:
             .tolist()
         )
 
+        embeddings = outputs.hidden_states[-1][0]
+
+        representation = []
+
+        for token, vector in zip(tokens, embeddings):
+
+            representation.append({
+                "token": token,
+                "vector": [
+                    round(float(x), 2)
+                    for x in vector[:5]
+                ]
+            })
+
         return {
 
             "prediction": prediction,
@@ -81,6 +95,8 @@ class BertimbauModel:
 
             "tokens": tokens,
 
-            "token_ids": token_ids
+            "token_ids": token_ids,
+
+            "representation": representation
 
         }
